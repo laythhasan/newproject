@@ -1,0 +1,299 @@
+﻿@model RegiseterViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="~/css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <section>
+        <div class="container h-100" id="container h-1000" style="margin-top:3%">
+            <div class="row d-flex justify-content-center align-items-center h-100" id="row d-flex justify-content-center align-items-center h-1000">
+                <div class="col col-xl-10">
+                    <div class="card" id="cardd">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="card">
+                                    <div class="card-body" style="padding: 0 !important;">
+                                        <img src="~/images/login/loginn.png" class="card" alt="..." width="100%">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div>
+                                    <a href=@Url.Action("Index1","Home") type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="btn-closee"></a>
+                                </div>
+                                <div class="card-body p-4 p-lg-5 text-black">
+                                    <form class="row g-3" method="post" asp-controller="Account" asp-action="Register" enctype="multipart/form-data">
+                                        @Html.HiddenFor(x => x.sRoles)
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <div class="col-md-6">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="form2Example27" id="form-labell">First Name</label>
+                                                <input asp-for="sFirstname" type="text" id="form2Example27" class="form-control form-control-lg" style="background: #F0F0F0;" />
+                                                <span asp-validation-for="sFirstname" class="text-danger"></span>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="form2Example27" id="form-labell">Last Name</label>
+                                                <input asp-for="sLastname" type="text" id="form2Example27" class="form-control form-control-lg" style="background: #F0F0F0;" />
+                                                <span asp-validation-for="sLastname" class="text-danger"></span>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-outline">
+                                                <label class="form-label" for="form2Example17" id="form-labell">Email</label>
+                                                <input asp-for="sEmail" type="email" id="form2Example17" class="form-control form-control-lg" style="background: #F0F0F0;" />
+                                                <span asp-validation-for="sEmail" class="text-danger"></span>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example17" id="form-labell">Mobile Number</label>
+                                            <input asp-for="sPhone" type="tel" id="form2Example17" class="form-control form-control-lg" style="background: #F0F0F0;" />
+                                            <span asp-validation-for="sPhone" class="text-danger"></span>
+
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example27" id="form-labell">Password</label>
+                                            <input asp-for="sPassword" type="password" id="form2Example27" class="form-control form-control-lg" style="background: #F0F0F0;" />
+                                            <span asp-validation-for="sPassword" class="text-danger"></span>
+
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example27" id="form-labell">Confirm Password</label>
+                                            <input asp-for="sConfirmPassword" type="password" id="form2Example27" class="form-control form-control-lg" style="background: #F0F0F0;" />
+                                            <span asp-validation-for="sConfirmPassword" class="text-danger"></span>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="label">Gender</label>
+                                            <select asp-for="nGenderid" class="form-control" style="background-color: #F0F0F0;"
+                                                    asp-items="@(new SelectList(Model.Genders, "GenderID", "GenderName"))">
+                                            </select>
+                                            <span asp-validation-for="nGenderid" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="label">Roles</label>
+                                            <select asp-for="sRoles" id="RolesValue" class="form-control" style="background-color: #F0F0F0;"
+                                                    asp-items="@(new SelectList(Model.Roles, "Id", "Name"))">
+                                            </select>
+                                            <span asp-validation-for="sRoles" class="text-danger"></span>
+                                        </div>
+                                        <div class="pt-1 mb-4">
+                                            <button class="btn btn-lg" type="submit" id="btnbtn">Sign up</button>
+                                        </div>
+                                        <p class="pa">
+                                            have an account?
+                                            <a href=@Url.Action("Login","Account") class="ab">Login</a>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#RolesValue").change(function () {
+                var value = $("#RolesValue option:selected");
+                $("#sRoles").val(value.text());
+            });
+        });
+    </script>
+<!--<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Sign Up</title>-->
+<!-- Mobile Specific Metas -->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+<!-- Font-->
+<!--<link rel="stylesheet" type="text/css" href="~/oWizard/css/muli-font.css">
+<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">-->
+<!-- datepicker -->
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="~/oWizard/css/jquery-ui.min.css">-->
+<!-- Main Style Css -->
+<!--<link rel="stylesheet" href="~/oWizard/css/style.css" />
+        <style>
+            #input {
+                background: #F0F0F0;
+            }
+            #text {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 21px;
+                /* identical to box height */
+                float: left;
+                color: #000000;
+            }
+            #input2 {
+                background: #108D85;
+                border-radius: 8px;
+            }
+            #have {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 16px;
+                color: #000000;
+            }
+
+            #log {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 17px;
+                line-height: 20px;
+                color: #108D85;
+            }
+
+            #sign {
+                font-family: Roboto;
+                font-style: normal;
+                font-weight: normal;
+                line-height: 18px;
+                color: rgba(60, 60, 67, 0.6);
+            }
+
+            #da {
+                color: #1A9D92;
+                background: #FFFFFF;
+                border: 1px solid #D3D3D3;
+                box-sizing: border-box;
+                border-radius: 100%;
+                padding: 10px;
+            }
+        </style>
+    </head>
+<body>
+    <div class="page-content">
+        <div class="wizard-v2-content">
+            <div class="wizard-image">
+            </div>
+            <div class="wizard-form">
+                <div class="wizard-header">
+                    <h5 style="text-align: center;" id="sign"><sup>Signup with BusinessCity</sup></h5>
+                    <br>
+                    <p style="text-align: center;">
+                        <span><a href="" id="da"><i class="fa fa-facebook-f"></i></a></span>
+                        <span><a href="" id="da"><i class="fa fa-google"></i></a></span>
+                        <span><a href="" id="da"><i class="fa fa-twitter"></i></a></span>
+                        <span><a href="" id="da"><i class="fa fa-instagram"></i></a></span>
+                    </p>
+                    <br><br>
+                </div>
+                <form class="form-register" method="post" asp-controller="Account" asp-action="Register" enctype="multipart/form-data">
+                    @Html.HiddenFor(x => x.sRoles)
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div id="form-total" style="text-align: center;">-->
+<!-- SECTION 1 -->
+<!--<h2>1</h2>
+<section>
+    <div class="inner">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4" id="text">First Name</label>
+                <input asp-for="sFirstname" type="text" class="form-control" id="input">
+                <span asp-validation-for="sFirstname" class="text-danger"></span>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4" id="text">Last Name</label>
+                <input asp-for="sLastname" type="text" class="form-control" id="input">
+                <span asp-validation-for="sLastname" class="text-danger"></span>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" id="text">Email</label>
+            <input asp-for="sEmail" type="email" class="form-control" id="input">
+            <span asp-validation-for="sEmail" class="text-danger"></span>
+
+        </div>
+    </div>
+</section>-->
+<!-- SECTION 2 -->
+<!--<h2>2</h2>
+<section>
+    <div class="inner">
+        <div class="form-group">
+            <label for="inputAddress" id="text">Mopile Number</label>
+            <input asp-for="sPhone" type="tel" class="form-control" id="input">
+            <span asp-validation-for="sPhone" class="text-danger"></span>
+
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" id="text">Password</label>
+            <input asp-for="sPassword" type="password" class="form-control" id="input">
+            <span asp-validation-for="sPassword" class="text-danger"></span>
+
+        </div>
+        <div class="form-group">
+            <label for="inputAddress" id="text">Confirm Password</label>
+            <input asp-for="sConfirmPassword" type="password" class="form-control" id="input">
+            <span asp-validation-for="sConfirmPassword" class="text-danger"></span>
+
+        </div>
+    </div>
+</section>-->
+<!-- SECTION 3 -->
+<!--<h2>3</h2>
+                            <section>
+                                <div class="inner">
+                                    <div class="form-row">
+
+                                        <div class="form-group">
+                                            <label class="label">Roles</label>
+                                            <select asp-for="sRoles" id="RolesValue" class="form-control"
+                                                    asp-items="@(new SelectList(Model.Roles, "Id", "Name"))">
+                                            </select>
+                                            <span asp-validation-for="sRoles" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <label class="label">Gender</label>
+                                            <select asp-for="nGenderid" class="form-control"
+                                                    asp-items="@(new SelectList(Model.Genders, "GenderID", "GenderName"))">
+                                            </select>
+                                            <span asp-validation-for="nGenderid" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </form>
+                        <p id="have">have an account? <span><a href=@Url.Action("Login","Account") style="float: right;" id="log">Login</a></span></p>
+
+                </div>
+
+            </div>
+        </div>
+        <script src="~/oWizard/js/jquery-3.3.1.min.js"></script>
+        <script src="~/oWizard/js/jquery.steps.js"></script>
+        <script src="~/oWizard/js/jquery-ui.min.js"></script>
+        <script src="~/oWizard/js/main.js"></script>
+
+    </body>
+</html>-->

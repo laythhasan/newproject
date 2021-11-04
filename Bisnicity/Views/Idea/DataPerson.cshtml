@@ -1,0 +1,159 @@
+﻿@model Bisnicity.Models.DataPersonViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = "_Layout";
+
+    var mess = TempData["messsages"] ?? string.Empty;
+}
+<style>
+
+    #pass {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        color: #000000;
+    }
+
+    .list-group a:active {
+        background-color: #1A9D92;
+        color: white;
+    }
+
+    #listgrop {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+    }
+
+    #text {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        color: #525252;
+    }
+
+    .card {
+        background: #FFFFFF;
+        border: 1px solid #C8E7E5;
+        box-sizing: border-box;
+        border-radius: 15px;
+        margin-bottom: 5%;
+    }
+
+    .card-img-top {
+        padding: 10px;
+    }
+
+    #input {
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 53px;
+    }
+
+    #label {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        color: #000000;
+    }
+
+    #labell {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        color: #363636;
+    }
+
+    #btn {
+        background: #1A9D92;
+        border-radius: 8px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFFFFF;
+        width: 177px;
+    }
+</style>
+<div class="container" style="margin-top: 5%;">
+    <div class="row">
+        <div class="col-md-9">
+            <h1 id="pass" style="margin-top: 1%;">Add Career</h1>
+            <hr>
+            <form asp-action="DataPerson" asp-controller="Idea" method="post" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label id="labell" for="inputAddress">Name</label>
+                    <input asp-for="Name" type="text" class="form-control" id="inputAddress input">
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="labell" for="inputEmail4">Email</label>
+                        <input asp-for="Email" type="email" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label id="labell" for="inputPassword4">Mobile Number</label>
+                        <input asp-for="phoneeNo" type="number" class="form-control" id="inputPassword4 input">
+                        <span asp-validation-for="@Model.phoneeNo" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="label">Gender</label>
+                        <select asp-for="genderID" class="form-control"
+                                asp-items="@(new SelectList(Model.Genders, "GenderID", "GenderName"))">
+                        </select>
+                        <span asp-validation-for="genderID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="label">Univircity</label>
+                        <select asp-for="uniID" class="form-control"
+                                asp-items="@(new SelectList(Model.univircitys,"UnivircityID","UniName"))"></select>
+                        <span asp-validation-for="uniID" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="label">Education level</label>
+                    <select asp-for="levelID" class="form-control"
+                            asp-items="@(new SelectList(Model.Educationlevels,"EducationlevelID","levelName"))"></select>
+                    <span asp-validation-for="levelID" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-block" id="btn">Send</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.error(ss);
+        }
+    })
+</script>
+
+

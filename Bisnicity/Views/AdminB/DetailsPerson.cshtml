@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Bisnicity.Models.InfoDTO>
+@using Infrastrucer.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> sigin;
+
+@{
+    ViewData["Title"] = "DetailsPerson";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>DetailsPerson</h1>
+
+<table class="table">
+    <thead>
+   
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutUs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expirence)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AboutImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Facebooklink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Whatslink)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.catpersonname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CatPersonID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sFirstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sLastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>Acions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailsPersonID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AboutUs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expirence)
+            </td>
+            <td>
+                <img src=~/Uploads/@item.AboutImage
+                     style="width:64px"
+                     asp-append-version="true" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facebooklink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Whatslink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.catpersonname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatPersonID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sFirstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sLastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @if (sigin.IsSignedIn(User) && User.IsInRole(BisnicityKey.Admin))
+            {
+                <td>
+                    <a href=@Url.Action("EditDetailsPerson","AdminB", new { id=item.DetailsPersonID }) class="badge bg-success edithover">Edit</a>
+                    <a href=@Url.Action("DeleteDetailsPerson","AdminB", new { id=item.DetailsPersonID }) class="badge bg-danger deletehover">Delete</a>
+                </td>
+            }
+        </tr>
+
+        }
+    </tbody>
+</table>

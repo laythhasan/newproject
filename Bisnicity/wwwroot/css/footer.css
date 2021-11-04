@@ -1,0 +1,21 @@
+#line {
+  opacity: 0.14;
+  border: 1px solid #ffffff;
+}
+#copyright {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+  mix-blend-mode: normal;
+  opacity: 0.55;
+}
+#links {
+  color: #108d85;
+  background-color: white;
+  border-radius: 29px;
+  padding: 5px;
+  margin: 4px;
+}

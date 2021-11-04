@@ -1,0 +1,53 @@
+﻿@using BisnicityApp.Entites
+@model IEnumerable<PostCompany>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #blogs {
+        margin-top: 10%;
+    }
+
+    .card {
+        background: #FFFFFF;
+        border: 1px solid #C8E7E5;
+        box-sizing: border-box;
+        border-radius: 15px;
+        margin-bottom: 5%;
+    }
+
+    .card-img-top {
+        padding: 10px;
+    }
+</style>
+<section id="blogs">
+    <div class="container">
+        <div class="row">
+            @{
+                if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="card" style="width: 22rem;">
+                                <img class="card-img-top" src="~/postImages/@item.ImagePost" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.TitelePost </h5>
+                                    <p class="card-text">@item.DetailsPost .</p>
+                                    <span style=" font-size: 11px;color: gray;">|  write by: Ghufran Zghoul  </span>
+                                    <br>
+                                    <br>
+                                    <a href="#" style="background-color: #1A9D92;color:#fff;border:1px solid  #1A9D92;padding:8px 20px;" class="btn">Read Now </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                  
+
+                }
+            }
+        </div>
+
+    </div>
+</section>    

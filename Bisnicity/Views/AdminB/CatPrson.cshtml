@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BisnicityApp.Entites.CatPerson>
+@using Infrastrucer.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> sigin;
+
+@{
+    ViewData["Title"] = "CatPrson";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>CatPrson</h1>
+@if (sigin.IsSignedIn(User) && User.IsInRole(BisnicityKey.Admin))
+{
+    <p>
+        <a asp-action="CreatCatPerson">Create New</a>
+    </p>
+}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.url)
+                </th>
+                <th>Acions</th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <img src=~/UploadsCategory/@item.Image
+                             style="width:64px"
+                             asp-append-version="true" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.url)
+                    </td>
+                    @if (sigin.IsSignedIn(User) && User.IsInRole(BisnicityKey.Admin))
+                    {
+                        <td>
+                            <a href=@Url.Action("EditcatPerson","AdminB", new { id=item.CatPersonID }) class="badge bg-success edithover">Edit</a>
+                            <a href=@Url.Action("DeleteCatperson","AdminB", new { id=item.CatPersonID }) class="badge bg-danger deletehover">Delete</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>

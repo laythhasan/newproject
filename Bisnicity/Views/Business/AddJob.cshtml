@@ -1,0 +1,187 @@
+﻿@model BisnicityApp.Entites.jobVacancy
+@{
+    Layout = "_Layout1";
+    ViewData["Title"] = "Job Vacancy";
+    var mess = TempData["messsages"] ?? string.Empty;
+}
+<link href="~/css/toastr.css" rel="stylesheet" />
+<style>
+
+    #pass {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        /* identical to box height */
+
+        color: #000000;
+    }
+
+    .list-group a:active {
+        background-color: #1A9D92;
+        color: white;
+    }
+
+    #listgrop {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #000000;
+    }
+
+    #text {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        /* or 171% */
+
+
+        color: #525252;
+    }
+
+    .card {
+        background: #FFFFFF;
+        border: 1px solid #C8E7E5;
+        box-sizing: border-box;
+        border-radius: 15px;
+        margin-bottom: 5%;
+    }
+
+    .card-img-top {
+        padding: 10px;
+    }
+
+    #input {
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 53px;
+    }
+
+    #label {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #363636;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group" style="border-radius: 1rem;" id="listgrop">
+                <a href=@Url.Action("Index","Business") class="list-group-item list-group-item-action" aria-current="true">
+                    <i style="color: #1A9D92;" class="fa fa-user"></i>  My Account
+                </a>
+                <a href=@Url.Action("ShowPerson","Business") class="list-group-item list-group-item-action"> <i style="color: #1A9D92;" class="fa fa-users"></i> Show Person</a>
+                <a href=@Url.Action("","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/category.png" alt="" srcset="" width="20" height="20"> Show Company Category </a>
+                <a href=@Url.Action("AddJob","Business") class="list-group-item list-group-item-action  active" style="background-color: #1A9D92;"><img src="~/images/profile/jop.png" alt="" srcset="" width="20" height="20"> Add job</a>
+                <a href=@Url.Action("AddPost","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/post.png" alt="" srcset="" width="20" height="20"> Add Post</a>
+                <a href=@Url.Action("ShowApplay","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/apply.png" alt="" srcset="" width="20" height="20"> Show Apply</a>
+
+                <a href=@Url.Action("MyPost","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/mypost.png" alt="" srcset="" width="20" height="20"> My Post</a>
+
+                <a href=@Url.Action("ShowJob","Business") class="list-group-item list-group-item-action">
+                    <img src="~/images/profile/company.png" alt="" srcset="" width="20" height="20"> Company Jobs
+                </a>
+
+
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h1 id="pass" style="margin-top: 1%;">Add Jop</h1>
+            <hr>
+            <form asp-action="AddJob" asp-controller="Business" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+                    <label id="label" for="inputAddress">Job Type</label>
+                    <input asp-for="JobType" type="text" class="form-control" id="inputAddress input">
+                    <span asp-validation-for="@Model.JobType" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Job Name</label>
+                        <input asp-for="JobName" type="text" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.JobName" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputPassword4">Salary</label>
+                        <input asp-for="Salary" type="text" class="form-control" id="inputPassword4 input">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Email</label>
+                        <input asp-for="Email" type="email" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputPassword4">Mobile Number</label>
+                        <input asp-for="PhoneNo" type="tel" class="form-control" id="inputPassword4 input">
+                        <span asp-validation-for="@Model.PhoneNo" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Company Name</label>
+                        <input asp-for="CompanyName" type="text" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.CompanyName" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputPassword4">Address</label>
+                        <input asp-for="Address" type="text" class="form-control" id="inputPassword4 input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label id="label" for="inputAddress">Requirements</label>
+                    <input asp-for="Requirements" type="text" class="form-control" id="inputAddress input">
+                    <span asp-validation-for="@Model.Requirements" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label id="label" for="inputAddress">Experience</label>
+                    <input asp-for="Experience" type="text" class="form-control" id="inputAddress input">
+                    <span asp-validation-for="@Model.Experience" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label id="label" for="inputAddress">Link OF LinkedIN</label>
+                    <input asp-for="LinkkedIn" type="url" class="form-control" id="inputAddress input">
+                </div>
+
+                <button type="submit" class="btn btn-block" style="background-color: #1A9D92; color: white;width: 28%;">Add Job</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/js/toastr.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.success(ss);
+        }
+    })
+</script>

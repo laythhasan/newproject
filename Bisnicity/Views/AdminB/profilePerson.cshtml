@@ -1,0 +1,117 @@
+﻿@model IEnumerable<Bisnicity.Models.InfoDTO>
+@using Infrastrucer.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> sigin;
+@{
+    ViewData["Title"] = "PErson";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Linklinkedin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GPA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Major)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EducationlevelID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameEducation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnivircityID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.uniname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sFirstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sLastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonID)
+            </td>
+            <td>
+                <img src=~/ProfilImage/@item.PersonImage
+                     style="width:64px"
+                     asp-append-version="true" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Linklinkedin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GPA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Major)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EducationlevelID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameEducation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnivircityID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.uniname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sFirstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sLastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @if (sigin.IsSignedIn(User) && User.IsInRole(BisnicityKey.Admin))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PersonID"></a>
+                    <a asp-action="Details" asp-route-id="@item.PersonID"></a>
+                    <a asp-action="Delete" asp-route-id="@item.PersonID"></a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>

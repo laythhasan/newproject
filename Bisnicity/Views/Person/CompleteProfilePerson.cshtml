@@ -1,0 +1,211 @@
+﻿@model Bisnicity.Models.CompleteProfilePersonViewModels
+@{
+    Layout = "_Layout";
+    var mess = TempData["messsages"] ?? string.Empty;
+}
+<style>
+
+    #pass {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        color: #000000;
+    }
+
+    .list-group a:active {
+        background-color: #1A9D92;
+        color: white;
+    }
+
+    #listgrop {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+    }
+
+    #text {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        color: #525252;
+    }
+
+    .card {
+        background: #FFFFFF;
+        border: 1px solid #C8E7E5;
+        box-sizing: border-box;
+        border-radius: 15px;
+        margin-bottom: 5%;
+    }
+
+    .card-img-top {
+        padding: 10px;
+    }
+
+    #input {
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 53px;
+    }
+
+    #label {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        color: #000000;
+    }
+
+    #labell {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        color: #363636;
+    }
+
+    #btn {
+        background: #1A9D92;
+        border-radius: 8px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFFFFF;
+        width: 177px;
+    }
+
+    #input {
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+
+    #pleaes {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 18px;
+        align-items: center;
+        text-align: right;
+        color: rgba(60, 60, 67, 0.6);
+    }
+
+    #che {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        color: #707070;
+    }
+</style>
+<div class="container" style="margin-top: 5%;">
+    <div class="row">
+        <div class="col-md-9">
+            <h1 id="pass" style="margin-top: 1%;">Complete Profile Person</h1>
+            <hr>
+            <form asp-action="CompleteProfilePerson" asp-controller="Person" method="post" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="labell" for="inputEmail4">Address</label>
+                        <input asp-for="Address" type="text" class="form-control" id="input">
+                        <span asp-validation-for="Address" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label id="labell" for="inputEmail4"> GPA </label>
+                        <input asp-for="GPA" type="tel" class="form-control" id="input">
+                        <span asp-validation-for="GPA" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="labell" for="inputEmail4">Major</label>
+                        <input asp-for="Major" type="tel" class="form-control" id="input">
+                        <span asp-validation-for="Major" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label id="labell" for="inputEmail4">Age</label>
+                        <input asp-for="Age" type="text" class="form-control" id="input">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label id="labell" for="inputEmail4">LinkedInLink</label>
+                        <input asp-for="LinkedInLink" type="tel" class="form-control" id="input">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="labell">ImageProfile</label><br>
+                        <label id="#label" for="apply">
+                            <input asp-for="uploadpersonimage" type="file" name="" id="apply" accept=".png, .jpg, .jpeg" style="width: 0px;">
+                            <img src="~/images/uploadicon/Group 11627.png" alt="" srcset="" width="20" height="20">
+                            <span id="pleaes"> Please Upload Your Picture </span>
+                        </label>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label id="labell">upload CV</label><br>
+                        <label id="#label" for="apply">
+                            <input asp-for="uploadscv" type="file" name="" id="apply" accept=".png, .jpg, .jpeg" style="width: 0px;">
+                            <img src="~/images/uploadicon/Group 11627.png" alt="" srcset="" width="20" height="20">
+                            <span id="pleaes"> Please Upload Your Picture </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="labell" for="inputEmail4">Univircity</label>
+                        <select asp-for="uniID" class="form-control"
+                                asp-items="@(new SelectList(Model.univircitys,"UnivircityID","UniName"))"></select>
+                        <span asp-validation-for="uniID" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label id="labell" for="inputEmail4">Education level</label>
+                        <select asp-for="levelID" class="form-control"
+                                asp-items="@(new SelectList(Model.Educationlevels,"EducationlevelID","levelName"))"></select>
+                        <span asp-validation-for="levelID" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <br><br>
+                <button type="submit" class="btn btn-block" id="btn">Send</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.error(ss);
+        }
+    })
+</script>

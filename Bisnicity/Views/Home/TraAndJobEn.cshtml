@@ -1,0 +1,93 @@
+﻿@using Infrastrucer.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> sigin;
+@{
+    Layout = "_Layout";
+
+}
+<style>
+    #a {
+        background: #1A9D92;
+        border-radius: 8px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFFFFF;
+        width: 100%;
+    }
+
+    #h5 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 64px;
+        text-align: center;
+        color: #261C2C;
+    }
+
+    #p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        /* or 150% */
+
+        text-align: center;
+        color: #525252
+    }
+</style>
+<div class="container">
+    <div class="row" style="margin-top: 5%;">
+
+        <div class="col-md-4" style="text-align: -webkit-center;">
+            <div class="card" style="width: 100%;">
+                <img src="~/images/Leadership/Rectangle 7842.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" id="h5">Traning</h5>
+                    <p class="card-text" id="p">Join us for the best training courses.</p>
+                    <a href=@Url.Action("TypeOFTranning", "Home") class="btn" id="a">Get Start</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="text-align: -webkit-center;">
+            <div class="card" style="width: 100%;">
+                <img src="~/images/Leadership/Rectangle 7843.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" id="h5">Jobs</h5>
+                    <p class="card-text" id="p">Join us for the best job opportunities available.</p>
+                    <a href=@Url.Action("ShowCompanyJob", "Home") class="btn" id="a" style="background: #1A9D92;
+              border-radius: 8px;">Get Start</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" style="text-align: -webkit-center;">
+            <div class="card" style="width: 100%;">
+                <img src="~/images/Leadership/Co.jpg" class="card-img-top" alt="...">
+                @if (sigin.IsSignedIn(User))
+                {
+                    <div class="card-body">
+                        <h5 class="card-title" id="h5">Coaches</h5>
+                        <p class="card-text" id="p">Join us for the best job opportunities available.</p>
+                        <a href=@Url.Action("IndexCoach", "Coach") class="btn" id="a" style="background: #1A9D92;
+              border-radius: 8px;">Get Start</a>
+                    </div>
+                }
+                else
+                {
+                <div class="card-body">
+                    <h5 class="card-title" id="h5">Coaches</h5>
+                    <p class="card-text" id="p">Join us for the best job opportunities available.</p>
+                    <a href=@Url.Action("Login", "Account") class="btn" id="a" style="background: #1A9D92;
+                      border-radius: 8px;">Get Start</a>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

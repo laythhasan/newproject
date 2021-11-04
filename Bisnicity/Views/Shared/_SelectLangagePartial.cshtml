@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> locOptions
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var returnurl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}{Context.Request.QueryString}";
+}
+<div title="@localizer["Request culture provider:"]@requestCulture?.Provider?.GetType().Name">
+    @{
+        string sLang = requestCulture.RequestCulture.UICulture.Name;
+        if (!string.IsNullOrEmpty(sLang))
+        {
+            string sSwtichLang = sLang == "en" ? "ar" : "en";
+        <form method="post" asp-action="SetLanguage" asp-controller="Home" asp-route-culture="@sSwtichLang" asp-route-returnurl="@returnurl" enctype="multipart/form-data">
+            <button class="btn btn-block" type="submit" style="color:black">@sSwtichLang <span style="color: green;">|</span></button>
+        </form>
+        }
+    }
+</div>

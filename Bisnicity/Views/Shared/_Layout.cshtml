@@ -1,0 +1,87 @@
+﻿@using Infrastrucer.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> sigin;
+@{ 
+    var ses = TempData["sessionad"] ?? string.Empty;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <partial name="_Meta" />
+    <environment include="Development">
+        <partial name="_JS" />
+    </environment>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm  mb-5">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href=@Url.Action("Index1","Home")>
+                <img src="~/images/logo/22.png" alt="" width="60" height="60">
+            </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
+                <span style="background-color: white;" class="navbar-toggler-icon"></span>
+            </button>
+
+
+                 <div class="collapse navbar-collapse" id="navbar4">
+                     <ul class="navbar-nav mr-auto pl-lg-4">
+
+                         <li class="nav-item px-lg-2 active" id="navcolor"><a id="navcolor2" class="nav-link" href=@Url.Action("Index1","Home")><span class="d-inline-block d-lg-none icon-width"></span> <i class="fas fa-home"></i></a> </li>
+                         <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor2" class="nav-link" href=@Url.Action("AboutUs","Home")><span class="d-inline-block d-lg-none icon-width"></span>About</a> </li>
+                         <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor2" class="nav-link" href=@Url.Action("ITsolution","Home")><span class="d-inline-block d-lg-none icon-width"></span>Solution</a> </li>
+                         <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor2" class="nav-link" href=@Url.Action("BuntEN","Home")><span class="d-inline-block d-lg-none icon-width"></span>BIT</a> </li>
+                         <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor2" class="nav-link" href=@Url.Action("BlogsEN","Home")><span class="d-inline-block d-lg-none icon-width"></span>Blogs</a> </li>
+                         <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor2" class="nav-link" href=@Url.Action("ContactUs","Home")><span class="d-inline-block d-lg-none icon-width"></span>Contact</a> </li>
+                     </ul>
+                     @{
+                         if (sigin.IsSignedIn(User))
+                         {
+                             <div class="d-flex ml-auto">
+                                 <form>
+                                     <ul class="control" style="float: right;">
+
+                                         <li><partial name="_SelectLangagePartial" /> </li>
+                                         <li>
+                                             <div class="dropdown">
+                                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                     <img style="border: 1px solid #1A9D92;" src="~/images/blogs/1.png" class="rounded-circle" alt="" width="30" height="30"> @ses
+                                                 </button>
+                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                     <a style="color: black;" class="dropdown-item" href=@Url.Action("Logout","Home")>Log Out</a>
+                                                 </div>
+                                             </div>
+                                         </li>
+                                     </ul>
+                                 </form>
+                             </div>
+                         }
+                         else
+                         {
+                             <div class="d-flex ml-auto">
+                                 <form>
+                                     <ul class="control" style="float: right;">
+
+                                         
+                                         <li><partial name="_SelectLangagePartial" /></li>
+                                         <li><a href=@Url.Action("Login","Account") style="color: white; background-color: #1A9D92;" class="signbtn">Sign In</a></li>
+                                         <li><a href=@Url.Action("Login","Account") style="color: #1A9D92; background-color: white; border: 1px solid black " class="signbtn">Rigester</a></li>
+
+                                     </ul>
+                                 </form>
+                             </div>
+                         }
+                     }
+
+
+                 </div>
+                     
+        </div>
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+    <partial name="_Footer" />
+</body>
+</html>

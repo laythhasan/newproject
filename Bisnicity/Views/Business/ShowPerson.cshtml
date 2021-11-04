@@ -1,0 +1,184 @@
+﻿@using Bisnicity.Models
+@model IEnumerable<ShowPersonViewModel>
+@{ 
+    Layout = "_Layout";
+}
+
+    <style>
+
+        #pass {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 22px;
+            line-height: 26px;
+            /* identical to box height */
+
+
+            color: #000000;
+        }
+
+
+
+        .list-group a:active {
+            background-color: #1A9D92;
+            color: white;
+        }
+
+        #listgrop {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 19px;
+            /* identical to box height */
+
+
+            color: #000000;
+        }
+
+        #text {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 24px;
+            /* or 171% */
+
+
+            color: #525252;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border: 1px solid #C8E7E5;
+            box-sizing: border-box;
+            border-radius: 15px;
+            margin-bottom: 5%;
+        }
+
+        .card-img-top {
+            padding: 10px;
+        }
+
+        #card {
+            background: #FFFFFF;
+            border: 1px solid #EAEAEA;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        #h5 {
+            text-align: center;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 24px;
+            color: #261C2C;
+        }
+
+        #p {
+            text-align: center;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            color: #818181;
+        }
+
+        #pp {
+            text-align: center;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            color: #818181;
+        }
+
+        #ppp {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            color: #818181;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="list-group" style="border-radius: 1rem;" id="listgrop">
+                    <a href=@Url.Action("Index","Business") class="list-group-item list-group-item-action" aria-current="true">
+                        <i style="color: #1A9D92;" class="fa fa-user"></i>  My Account<i class="fas fa-user-alt"></i>
+                    </a>
+                    <a href=@Url.Action("ShowPerson","Business") class="list-group-item list-group-item-action active" style="background-color: #1A9D92;"> <i style="color: #1A9D92;" class="fa fa-users"></i> Show Person</a>
+                    <a href=@Url.Action("","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/category.png" alt="" srcset="" width="20" height="20"> Show Company Category </a>
+                    <a href=@Url.Action("AddJob","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/jop.png" alt="" srcset="" width="20" height="20"> Add job</a>
+                    <a href=@Url.Action("AddPost","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/post.png" alt="" srcset="" width="20" height="20"> Add Post</a>
+                    <a href=@Url.Action("Index","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/apply.png" alt="" srcset="" width="20" height="20"> Show Apply</a>
+
+                    <a href=@Url.Action("MyPost","Business") class="list-group-item list-group-item-action "><img src="~/images/profile/mypost.png" alt="" srcset="" width="20" height="20"> My Post</a>
+
+                    <a href=@Url.Action("ShowJob","Business") class="list-group-item list-group-item-action">
+                        <img src="~/images/profile/company.png" alt="" srcset="" width="20" height="20"> Company Jobs
+                    </a>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <h1 id="pass" style="margin-top: 1%;">Show Person</h1>
+                <hr>
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                @{
+
+                                    if (Model != null)
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <div class="card" id="card">
+
+                                                <div class="card-body">
+                                                   <h5 class="card-title" id="h5">@item.Major</h5>
+
+                                                   <p class="card-text" id="p">@item.FirstName</p>
+
+                                                    <p class="card-text" id="ppp"><img src="~/images/jop/email.png" style="margin-right:5%;">@item.Email</p>
+                                                </div>
+
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item" id="ppp"><img src="~/images/jop/phone.png" style="margin-right:5%;">@item.PhoneNo</li>
+
+                                                    <li class="list-group-item" id="ppp"><img src="~/images/jop/location.png" style="margin-right:5%;">@item.Address</li>
+                                                </ul>
+
+                                                <div class="card-body">
+                                                    <p class="card-text" id="ppp"><img src="~/images/jop/linkedin.png" style="margin-right:5%;">@item.LinkedIn</p>
+
+                                                </div>
+                                            </div>
+                                        }
+
+
+                                    }
+
+                                }
+                            </div>
+
+                            </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+

@@ -1,0 +1,99 @@
+﻿@{ 
+    Layout = "_Layout";
+
+}
+<style>
+    #a {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFFFFF;
+        background: #1A9D92;
+        border-radius: 8px;
+        width: 196px;
+        margin-top: 1%;
+    }
+
+    #h5 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 64px;
+        text-align: center;
+        color: #261C2C;
+    }
+
+    #p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+    }
+
+
+
+    #select {
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+</style>
+<div class="container">
+    <div class="row" style="margin-top: 10%;">
+
+        <div class="col-md-12" style="text-align: center;">
+            <img src="~/images/trining/rafiki.png">
+            <p id="p">Please Choose the type of training that suits you:</p>
+            <br>
+        <h1>Type of training</h1>
+        </div>
+
+        <div class="row" style="margin-top: 4rem;">
+
+            <div class="col-md-4" style="text-align:-webkit-center;">
+                <div class="card" style="width: 100%;">
+                    <img src="~/images/trining/Vocational.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="h5">Vocational</h5>
+                        <p class="card-text" id="p">Join us for the best training courses.</p>
+                        <a href=@Url.Action("VocationalEn","Home") class="btn" id="a">Get Start</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" style="text-align:-webkit-center;">
+                <div class="card" style="width: 100%;">
+                    <img src="~/images/trining/Acadmic.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="h5">Acadmic</h5>
+                        <p class="card-text" id="p">Join us for the best job opportunities available.</p>
+                        <a href=@Url.Action("BenefitsOfTranning","Home") class="btn" id="a" style="background: #1A9D92;
+                  border-radius: 8px;">Get Start</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4" style="text-align:-webkit-center;">
+                <div class="card" style="width: 100%;">
+                    <img src="~/images/trining/Voluntering.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="h5">Voluntering</h5>
+                        <p class="card-text" id="p">Join us for the best job opportunities available.</p>
+                        <a href=@Url.Action("volunteer","Home") class="btn" id="a" style="background: #1A9D92;
+                  border-radius: 8px;">Get Start</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

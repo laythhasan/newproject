@@ -1,0 +1,96 @@
+﻿@using Bisnicity.Models
+@model IEnumerable<ShowCompanyViewmodel>
+@{
+    Layout = "_Layout";
+}
+<link href="~/css/toastr.css" rel="stylesheet" />
+<div class="container">
+    <form asp-controller="Home" asp-action="ShowCompanyJob">
+
+        <div class="input-group mt-1 mb-1">
+            <input class="form-control border-2" name="job" id="job" type="search" placeholder="Search"
+                   aria-label="Search">
+            <button class="btn  text-white border-1 bg-dark"
+                    type="submit">
+                Search
+            </button>
+
+        </div>
+    </form>
+    <div class="row">
+        @if (Model != null)
+        {
+            <div class="col-md-9">
+                <h1 id="pass" style="margin-top: 1%;">
+                    Company Jobs
+                </h1>
+                <hr>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="card" style="background: #FFFFFF;
+                            border: 1px solid #EAEAEA;
+                            box-sizing: border-box;
+                            border-radius: 8px;">
+
+                                <div class="card-body">
+                                    <h5 class="card-title" style="text-align: center; font-family: Roboto;
+                                  font-style: normal;
+                                  font-weight: bold;
+                                  font-size: 16px;
+                                  line-height: 24px;
+                                  color: #261C2C; ">
+                                        @item.NameJob
+                                    </h5>
+
+                                    <p class="card-text" style="text-align: center; font-family: Roboto;
+                                  font-style: normal;
+                                  font-weight: normal;
+                                  font-size: 16px;
+                                  line-height: 24px;
+                                  color: #818181;">@item.jobtype</p>
+
+                                <p class="card-text" id="incard"><img src="~/images/jop/email.png" style="margin-right:5%;">@item.Email</p>
+                            </div>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" id="incard"><img src="~/images/jop/phone.png" style="margin-right:5%;">@item.PhoneNo</li>
+
+                                <li class="list-group-item" id="incard"><img src="~/images/jop/location.png" style="margin-right:5%;">@item.City, Jordan</li>
+
+                                <li class="list-group-item" id="incard"><img src="~/images/jop/experice.png" style="margin-right:5%;">@item.Experience</li>
+
+                                <li class="list-group-item" id="incard"><img src="~/images/jop/Vector (6).png" style="margin-right:5%;">@item.Requirements. </li>
+                            </ul>
+
+                            <div class="card-body">
+                                <p class="card-text" id="incard"><img src="~/images/jop/linkedin.png" style="margin-right:5%;">WWW.linkedin.com</p>
+
+                                <a href=@Url.Action("Aplayjob", "Person", new { id = item.jobvacancyid }) class="btn text-white" style="background-color:#15878e;">Apply</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                </div>
+
+
+            </div>
+        }
+    </div>
+</div>
+@*@section Scripts{
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#job").autocomplete({
+                source: 'api/GetDate/Search'
+            });
+        });
+    </script>
+
+}*@
+
+

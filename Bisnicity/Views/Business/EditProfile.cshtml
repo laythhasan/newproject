@@ -1,0 +1,194 @@
+﻿@model Bisnicity.Models.BusniessViewModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "EditProfile";
+    var mess = TempData["qqq"] ?? string.Empty;
+}
+<link href="~/css/toastr.css" rel="stylesheet" />
+
+<style>
+    #text {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        color: #363636;
+    }
+
+    #text2 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #000000;
+    }
+
+    #pass {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+    }
+
+    #inpass {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #A09696;
+    }
+
+    #dot {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 50px;
+        line-height: 48px;
+        /* identical to box height */
+
+
+        color: #3A3A3A;
+    }
+
+    .list-group a:active {
+        background-color: #1A9D92;
+        color: white;
+    }
+
+    #listgrop {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #000000;
+    }
+
+    #input {
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 53px;
+    }
+
+    #label {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #363636;
+    }
+</style>
+<div class="container" style="margin-top:5%">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group" style="border-radius: 1rem;" id="listgrop">
+                <a href=@Url.Action("Index","Business") class="list-group-item list-group-item-action active" style="background-color:#1A9D92 ; color: white;" aria-current="true">
+                    <i style="color: white;" class="fa fa-user"></i>  My Account
+                </a>
+                <a href=@Url.Action("ShowPerson","Business") class="list-group-item list-group-item-action"> <i style="color: #1A9D92;" class="fa fa-users"></i> Show Person</a>
+                <a href=@Url.Action("","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/category.png" alt="" srcset="" width="20" height="20"> Show Company Category </a>
+                <a href=@Url.Action("AddJob","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/jop.png" alt="" srcset="" width="20" height="20"> Add job</a>
+                <a href=@Url.Action("AddPost","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/post.png" alt="" srcset="" width="20" height="20"> Add Post</a>
+                <a href=@Url.Action("ShowApplay","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/apply.png" alt="" srcset="" width="20" height="20"> Show Apply</a>
+
+                <a href=@Url.Action("MyPost","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/mypost.png" alt="" srcset="" width="20" height="20"> My Post</a>
+
+                <a href@Url.Action("ShowJob","Business") class="list-group-item list-group-item-action">
+                    <img src="~/images/profile/company.png" alt="" srcset="" width="20" height="20"> Company Jobs
+                </a>
+
+
+            </div>
+        </div>
+        <div class="col-md-9">
+            <h1 id="pass" style="margin-top: 1%;">Edit Profile</h1>
+            <hr>
+            <form asp-action="EditProfile" asp-controller="Business" enctype="multipart/form-data" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="InfoID" />
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">First Name</label>
+                        <input asp-for="FirstName" readonly type="text" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputPassword4">Last Name </label>
+                        <input asp-for="LastName" readonly type="text" class="form-control" id="inputPassword4 input">
+                        <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Mobile Number</label>
+                        <input asp-for="PhoneNo" readonly type="tel" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.PhoneNo" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Company Name</label>
+                        <input asp-for="CompanyName" type="text" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.CompanyName" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Link LinkedIN</label>
+                        <input asp-for="Linklinkedin" type="url" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.Linklinkedin" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="pathimage" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <input type="submit" class="btn btn-block" value="Save" style="background-color: #1A9D92; color: white;border-radius: 1rem;" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <a href=@Url.Action("Index","Business") class="btn btn-block" style="background-color: #fdfdfd; color: rgb(0, 0, 0);border-radius: 1rem;border: 1px solid gray;">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/js/toastr.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.success(ss);
+        }
+    })
+</script>

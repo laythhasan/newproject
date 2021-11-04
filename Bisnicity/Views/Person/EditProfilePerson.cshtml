@@ -1,0 +1,197 @@
+﻿@model Bisnicity.Models.PersonViewModels
+
+@{
+    ViewData["Title"] = "EditProfilePerson";
+    Layout = "_Layout";
+    var mess = TempData["editsucc"] ?? string.Empty;
+}
+<link href="~/css/toastr.css" rel="stylesheet" />
+
+<style>
+    #text {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        color: #363636;
+    }
+
+    #text2 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #000000;
+    }
+
+    #pass {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000000;
+    }
+
+    #inpass {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 16px;
+        color: #A09696;
+    }
+
+    #dot {
+        font-family: Nunito;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 50px;
+        line-height: 48px;
+        /* identical to box height */
+
+
+        color: #3A3A3A;
+    }
+
+    .list-group a:active {
+        background-color: #1A9D92;
+        color: white;
+    }
+
+    #listgrop {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #000000;
+    }
+
+    #input {
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        border-radius: 8px;
+        height: 53px;
+    }
+
+    #label {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #363636;
+    }
+</style>
+<div class="container" style="margin-top:5%">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group" style="border-radius: 1rem;" id="listgrop">
+                <div class="list-group" style="border-radius: 1rem;" id="listgrop">
+                    <a class="list-group-item list-group-item-action active" style="background-color:#1A9D92 ; color: white;" aria-current="true">
+                        <i style="color: white;" class="fa fa-user"></i>  My Account<i class="fas fa-user-alt"></i>
+                    </a>
+                    <a href=@Url.Action("","Person") class="list-group-item list-group-item-action"><img src="~/images/profile/category.png" alt="" srcset="" width="20" height="20"> Show person Category </a>
+                    <a href=@Url.Action("ShowCompanyJob2","Person") class="list-group-item list-group-item-action"><img src="~/images/profile/jop.png" alt="" srcset="" width="20" height="20"> Show job</a>
+
+
+
+                </div>
+            </div>
+        <div class="col-md-9">
+            <h1 id="pass" style="margin-top: 1%;">Edit Profile</h1>
+            <hr>
+            <form asp-action="EditProfilePerson" asp-controller="Person" enctype="multipart/form-data" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="PersonID" />
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">First Name</label>
+                        <input asp-for="FirstName" readonly type="text" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputPassword4">Last Name </label>
+                        <input asp-for="LastName" readonly type="text" class="form-control" id="inputPassword4 input">
+                        <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Age</label>
+                        <input asp-for="Age" readonly type="tel" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.Age" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Adress</label>
+                        <input asp-for="Address" type="text" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.Address" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Major</label>
+                        <input asp-for="Major" type="text" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.Major" class="text-danger"></span>
+
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label id="label" for="inputEmail4">Link LinkedIN</label>
+                        <input asp-for="LinkedInLink" type="url" class="form-control" id="inputEmail4 input">
+                        <span asp-validation-for="@Model.LinkedInLink" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="PersonImagePath" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="hidden" asp-for="GPA" class="form-control">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <input type="submit" class="btn btn-block" value="Save" style="background-color: #1A9D92; color: white;border-radius: 1rem;" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <a href=@Url.Action("IndexPerson","Person") class="btn btn-block" style="background-color: #fdfdfd; color: rgb(0, 0, 0);border-radius: 1rem;border: 1px solid gray;">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.success(ss);
+        }
+    })
+</script>

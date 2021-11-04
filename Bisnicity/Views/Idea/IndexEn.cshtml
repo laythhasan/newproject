@@ -1,0 +1,66 @@
+﻿@{ 
+    Layout = "_Layout";
+
+}
+<style>
+    #a {
+        background: #1A9D92;
+        border-radius: 8px;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFFFFF;
+        width: 100%;
+    }
+
+    #h5 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 64px;
+        text-align: center;
+        color: #261C2C;
+    }
+
+    #p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 36px;
+        text-align: center;
+        color: #525252
+    }
+</style>
+<div class="container">
+    <div class="row" style="margin-top: 10%;">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" style="text-align:-webkit-center; ">
+            <div class="card" style="width: 20rem; height: 350px; padding: 5px;">
+                <img src="~/images/idea/idea (1) 1.png" class="card-img-top" alt="..." style="width: 25%; margin-left: 37%;">
+                <div class="card-body">
+                    <h5 class="card-title" id="h5">Idea</h5>
+                    <p class="card-text" id="p">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <a href=@Url.Action("AddIdea","Idea") class="btn" id="a">Get Start</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" style="text-align:-webkit-center;  ">
+            <div class="card" style="width: 20rem; height: 350px; padding: 5px;">
+                <img src="~/images/idea/inspiration 1.png" class="card-img-top" alt="..." style="width: 25%; margin-left: 37%;">
+                <div class="card-body">
+                    <h5 class="card-title" id="h5">Support Idea</h5>
+                    <p class="card-text" id="p">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <a href="#" class="btn" id="a" style="background: #1A9D92;
+              border-radius: 8px;">Get Start</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

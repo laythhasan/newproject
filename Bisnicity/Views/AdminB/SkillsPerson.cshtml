@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Bisnicity.Models.InfoDTO>
+@using Infrastrucer.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> sigin;
+@{
+    ViewData["Title"] = "SkillsPerson";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>SkillsPerson</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SkillsName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Courses)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sFirstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sLastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillsPersonID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SkillsName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sFirstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sLastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            @if (sigin.IsSignedIn(User) && User.IsInRole(BisnicityKey.Admin))
+            {
+                <td>
+                    <a href=@Url.Action("EditSkillsPerson", "AdminB", new { id = item.SkillsPersonID }) class="badge bg-success edithover">Edit</a>
+                    <a href=@Url.Action("", "AdminB",new { id = item.SkillsPersonID }) class="badge bg-danger deletehover">Delete</a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>

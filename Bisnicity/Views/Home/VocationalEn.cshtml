@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "_Layout";
+    var mess = TempData["message"] ?? string.Empty;
+
+}
+<link href="~/css/toastr.css" rel="stylesheet" />
+<style>
+
+    #h1 {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 72px;
+        color: #000000;
+        margin-top: 3%;
+    }
+
+    #p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 32px;
+        color: #000000;
+    }
+
+    #but {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFFFFF;
+        background: #1A9D92;
+        border-radius: 8px;
+        width: 263px;
+    }
+</style>
+<div class="container-fluid" style="background-color: #F2F2F2; border-radius: 8px;">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-6">
+            <h1 id="h1">Vocational training</h1>
+            <p id="p">
+                About vocational training.<br>
+                Vocational training is defined as the education that prepares male and female students to<br>
+                work in a specialty. Or a package or a craft: that is, to become an expert in a specific field, and<br>
+                sometimes it is called technical education
+            </p>
+            <br>
+            <a href=@Url.Action("AddVocational","Home") class="btn" id="but">Join Now </a>
+            <br>
+            <br>
+            <br>
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid" style="margin-top: 5%;">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-6">
+            <img src="~/images/Leadership/Rectangle 7844.png" style="width: 100%;">
+            <p id="p" style="margin-top: 5%;">
+                Vocational education includes several specializations in different fields. It is worth noting that some professional matters may not<br> require a certificate or scientific knowledge, such as gold and silversmithing, as they depend more on practical skills away from the <br>academy.
+            </p>
+            <br>
+            <p id="p"> Vocational education, in other words, means education that is directly related to the labor market, job, industry, package or<br> technology. Vocational education is often taught at the secondary level in schools and universities as well. It is worth noting that<br> vocational education and vocational training are abundant, as it is taught in schools, vocational training centers, colleges,<br> universities and schools.</p>
+            <br>
+            <p id="p" style="margin-bottom: 5%;">
+                And still, until now, students of vocational education acquire knowledge and then apply it, as if they were learning commerce, for <br> example, so they acquire scientific knowledge and its principles, and then apply them in the commercial labor market.
+            </p>
+        </div>
+
+        <div class="col-md-5"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.success(ss);
+        }
+    })
+</script>
+
+
+
+
+
+
+
+
+

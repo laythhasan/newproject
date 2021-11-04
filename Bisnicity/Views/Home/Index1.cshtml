@@ -1,0 +1,281 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer loc
+@model LoginViewModel
+@using Infrastrucer.Models;
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<ApplicationUser> sigin;
+@{
+    var mess = TempData["Erorr"] ?? string.Empty;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/home.css">
+    <link href="~/css/login.css" rel="stylesheet" />
+    <link href="~/css/toastr.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    @*@section sdd{
+            <style>
+
+                media only screen and (max-width: 600px) {
+                }
+
+                .example margin-top:28%;
+            </style>
+        }*@
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm fixed-top mb-5">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href=@Url.Action("Index1", "Home")>
+                    <img src="~/images/logo/loggoneww.png" alt="" width="60" height="60">
+                    <!-- <span class="ml-3 font-weight-bold">BRAND</apan> -->
+                </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
+                    <span style="background-color: white;" class="navbar-toggler-icon"></span>
+                </button>
+
+                @{
+                    if (sigin.IsSignedIn(User))
+                    {
+                        <div class="collapse navbar-collapse" id="navbar4">
+                            <ul class="navbar-nav mr-auto pl-lg-4 text-white">
+
+                                <li style="margin-left: 7%;" class="nav-item px-lg-2 active" id="navcolor"><a id="navcolor" class="nav-link" href=@Url.Action("Index1", "Home")><span class="d-inline-block d-lg-none icon-width"></span> <i class="fas fa-home"></i></a> </li>
+                                <li style="margin-left: 7%;" class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("AboutUs", "Home")><span class="d-inline-block d-lg-none icon-width"></span>About</a> </li>
+                                <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("ITsolution", "Home")><span class="d-inline-block d-lg-none icon-width"></span>Solution</a> </li>
+                                <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("BuntEN", "Home")><span class="d-inline-block d-lg-none icon-width"></span>BIT</a> </li>
+                                <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("BlogsEN", "Home")><span class="d-inline-block d-lg-none icon-width"></span>Blogs</a> </li>
+                                <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("ContactUs", "Home")><span class="d-inline-block d-lg-none icon-width"></span>Contact</a> </li>
+                            </ul>
+                            <div class="d-flex ml-auto">
+                                <form>
+                                    <ul class="control" style="float: right;">
+                                        <li><partial name="_SelectLangagePartial" /></li>
+                                        <li>
+                                            <a href=@Url.Action("Logout","Home") style="color: #000;" class="signbtn">
+                                                LogOut
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </form>
+                            </div>
+                        </div>
+                    }
+                    else
+                    { <div class="collapse navbar-collapse" id="navbar4">
+                            <ul class="navbar-nav mr-auto pl-lg-4 text-white">
+
+                                <li style="margin-left: 7%;" class="nav-item px-lg-2 active" id="navcolor"><a id="navcolor" class="nav-link" href=@Url.Action("Index1","Home")><span class="d-inline-block d-lg-none icon-width"></span> <i class="fas fa-home"></i></a> </li>
+                                <li style="margin-left: 7%;" class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("AboutUs","Home")><span class="d-inline-block d-lg-none icon-width"></span>About</a> </li>
+                                <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("ITsolution","Home")><span class="d-inline-block d-lg-none icon-width"></span>Solution</a> </li>
+                                <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("BuntEN","Home")><span class="d-inline-block d-lg-none icon-width"></span>BIT</a> </li>
+                                <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("BlogsEN","Home")><span class="d-inline-block d-lg-none icon-width"></span>Blogs</a> </li>
+                                <li class="nav-item px-lg-2" id="navcolor"> <a id="navcolor" class="nav-link" href=@Url.Action("ContactUs","Home")><span class="d-inline-block d-lg-none icon-width"></span>Contact</a> </li>
+                            </ul>
+                            <div class="d-flex ml-auto">
+                                    <ul class="control" style="float: right;">
+                                        <li>
+                                             <partial name="_SelectLangagePartial" />
+                                        </li>
+                                        <li>
+                                            <a href=@Url.Action("Login","Account") style="color: #000;" class="signbtn">
+                                                LogIn
+                                            </a>
+                                      
+                                        </li>
+                                    </ul>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </nav>
+        
+        <hr class="navborder" style="color:gray;">
+        <div class="storybored-content">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="context-box">
+                    <div class="content-title" style="margin-top:15%; float: left;">
+                        <h1 class="example">@loc["home"].Value <br> <span style="font-size: 19px;"> @loc["subhome"].Value</span> </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main>
+        <section>
+            <div class="services">
+                <div class="container">
+                    <h4 id="text">@loc["services"].Value</h4>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="service-box card">
+                                <div class="service-image">
+                                    <img src="~/images/home/1.png" alt="serviceicon">
+                                </div>
+                                <div class="service-title">
+                                    <h5>@loc["person"].Value</h5>
+                                </div>
+                                <div class="service-breif">
+                                    <p>@loc["subperson"]</p>
+                                </div>
+                                <div class="service-link">
+                                    <a href=@Url.Action("TraAndJobEn","Home")>@loc["join"]</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="service-box card">
+                                <div class="service-image">
+                                    <img src="./images/home/3.png" alt="serviceicon">
+
+                                </div>
+                                <div class="service-title">
+                                    <h5>@loc["Buissness"]</h5>
+                                </div>
+                                <div class="service-breif">
+                                    <p>@loc["SubBuissness"]</p>
+                                </div>
+                                @if (sigin.IsSignedIn(User))
+                                {<div class="service-link">
+                                     <a href=@Url.Action("Index","Business")>@loc["join"]</a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="service-link">
+                                        <a href=@Url.Action("Login","Account")>@loc["join"]</a>
+                                    </div>
+                                }
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                            <div class="service-box card">
+                                <div class="service-image">
+                                    <img src="~/images/home/5.png" alt="serviceicon">
+
+                                </div>
+                                <div class="service-title">
+                                    <h5>@loc["Ship"]</h5>
+                                </div>
+                                <div class="service-breif">
+                                    <p>@loc["SubShip"]</p>
+                                </div>
+                                <div class="service-link">
+                                    <a href=@Url.Action("IndexEn","Idea")>@loc["join"]</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="our-parnter">
+                <h5 id="text">@loc["Partners"]</h5>
+            </div>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.min.css" />
+            <link href="~/css/slider.css" rel="stylesheet">
+            <div class="section brands container">
+                <div class="glide" id="glide2">
+                    <div class="glide__track" data-glide-el="track">
+                        <ul class="glide__slides">
+                            <li id="border" class="glide__slide">
+                                <img src="~/images/Client/1.png" alt="">
+                            </li>
+                            <li id="border" class="glide__slide">
+                                <img src="~/images/Client/2.png" alt="">
+                            </li>
+                            <li id="border" class="glide__slide">
+                                <img src="~/images/Client/3.png" alt="">
+                            </li>
+                            <li id="border" class="glide__slide">
+                                <img src="~/images/Client/4.png" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+            <script src="~/js/slider.js"></script>
+        </section>
+    </main>
+
+    <link rel="stylesheet" href="~/css/footer.css">
+    <!-- Start Footer  -->
+    <section class="container-fluid text-center mt-5" style="background: #108D85">
+        <br>
+        <a href=@Url.Action("Index1","Home") style="color: white !important; padding: 6px;"><i class="fas fa-home"></i> Home </a>
+        <a href=@Url.Action("ContactUs","Home") style="color: white !important; padding: 6px;"><i class="fas fa-envelope-open"></i> Contact </a>
+        <a href=@Url.Action("AboutUs","Home") style="color: white !important; padding: 6px;"><i class="fas fa-info-circle"></i> About Us </a>
+        <hr id="line">
+        <div class="row">
+            <div class="col-md-6" id="copyright">© 2021 I  Busincity</div>
+            <div class="col-md-6">
+                <a href=""> <i id="links" class="fab fa-facebook-f"></i></a>
+                <a href=""><i id="links" class="fab fa-twitter"></i></a>
+                <a href=""><i id="links" class="fab fa-youtube"></i></a>
+                <a href=""><i id="links" class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <br>
+    </section>
+    <!-- End Footer -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+
+        $(document).ready(function () {
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() >= 95 && !$('nav').hasClass('fixed')) {
+                    $('.navbar').addClass("fixed");
+                    $('.nav-link').css("color", "#000");
+                    $(".signbtn").css("background-color", "#1A9D92");
+                    $(".signbtn").css("color", "#000 !important");
+                    $(".control li a").css("color", "#000");
+                }
+                else if ($(window).scrollTop() < 95 && $('nav').hasClass('fixed')) {
+                    $('nav').removeClass('fixed');
+                    $(".signbtn").css("background-color", "#fff");
+                    $('.nav-link').css("color", "#fff");
+                    $(".control li a").css("color", "black");
+                    $(".control li a span").css("color", "white");
+
+
+
+                }
+            });
+        });
+    </script>
+
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.error(ss);
+        }
+    })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+</body>
+</html>

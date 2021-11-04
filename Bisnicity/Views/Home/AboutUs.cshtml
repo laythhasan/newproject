@@ -1,0 +1,167 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer loc
+@{
+    Layout = "_Layout";
+
+}
+<style>
+    #a {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 32px;
+        text-align: center;
+        color: #FFFFFF;
+        background: #1A9D92;
+        border-radius: 8px;
+        width: 196px;
+        margin-top: 1%;
+    }
+
+    #p {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #525252;
+    }
+
+    #pp {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 19px;
+        color: #363636;
+    }
+
+    #select {
+        background: #FFFFFF;
+        border: 1px solid #E8E8E8;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+
+    #card {
+        width: 40%;
+        margin-left: 31%;
+        padding: 21px;
+    }
+
+    #incardtext {
+        font-family: Cairo;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 36px;
+        text-align: center;
+        color: #18968E;
+    }
+
+    #outcard {
+        background: #FFFFFF;
+        box-sizing: border-box;
+    }
+</style>
+
+<section id="about">
+    <div class="container-fluid">
+        <div class="card bg-dark text-white">
+            <img src="~/images/about/header.png" class="card-img" width="100%" height="auto">
+            <div class="card-img-overlay text-center" style="margin-top: 7%;">
+                <h3 class="card-title">@loc["about"].Value</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 1%;">
+        <div class="row">
+            <div class="col-md-4" style="text-align: -webkit-center; margin-bottom: 1%;">
+                <div class="card" style="width: 100%;border-radius: 2rem">
+                    <img src="~/images/about/knowledge 1.png" class="card-img-top" alt="..." id="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="incardtext">
+                            @loc["Vision"].Value
+                        </h5>
+                        <p class="card-text" id="p">@loc["SubVision"].Value</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="text-align: -webkit-center;margin-bottom: 1%;" id="outcard">
+                <div class="card" style="width: 100%;border-radius: 2rem">
+                    <img src="~/images/about/target 1.png" class="card-img-top" alt="..." id="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="incardtext">
+                            @loc["Mission"].Value
+                        </h5>
+                        <p class="card-text" id="p">@loc["SubMission"].Value</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="text-align: -webkit-center;margin-bottom: 1%;" id="outcard">
+                <div class="card" style="width: 100%;border-radius: 2rem">
+                    <img src="~/images/about/principle 1.png" class="card-img-top" alt="..." id="card">
+                    <div class="card-body">
+                        <h5 class="card-title" id="incardtext">
+                            @loc["Principles"].Value
+                        </h5>
+                        <p class="card-text" id="p">@loc["SubPrinciples"].Value</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</section>
+
+<div class="container mt-0">
+    <div class="text-center" style="font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 48px;">@loc["Scope"].Value<br><p style="color: #18968E; font-size: larger;"> ______ </p></div>
+    <div class="row">
+        <div class="col-md-5">
+            @*<p style="font-family: Roboto;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 18px;
+                line-height: 27px;
+                color: #18968E;">Lorem Ipsum is simply dummy</p>*@
+            <p>
+                @loc["TittleScope"].Value
+                <br><br>
+                @loc["one"].Value
+                <br><br>
+                @loc["tow"].Value
+                <br><br>
+                @loc["three"].Value
+                <br><br>
+
+                @loc["four"].Value
+                <br><br>
+
+                @loc["five"].Value
+                <br><br>
+
+                @loc["sex"].Value
+                <br><br>
+
+                @loc["seven"].Value
+
+            </p>
+        </div>
+        <div class="col-md-7">
+            <div class="col-lg-12">
+                <img src="~/images/about/a.png" alt="" width="100%">
+            </div>
+
+            <div class="col-lg-12 mt-5">
+                <img src="~/images/about/b.png" alt="" width="100%">
+            </div>
+        </div>
+    </div>
+</div>

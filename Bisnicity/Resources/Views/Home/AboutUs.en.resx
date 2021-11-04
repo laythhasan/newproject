@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="about" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="eight" xml:space="preserve">
+    <value>⦁ Programming and development of professional programs and websites of all forms.</value>
+  </data>
+  <data name="five" xml:space="preserve">
+    <value>⦁ Content writing, photography, web programming and translation services in Arabic and
+English.</value>
+  </data>
+  <data name="four" xml:space="preserve">
+    <value>⦁ A search engine that fills the professional and specialized vacancies required in different
+sectors to reduce the gap between companies and job-seeking skills in the same field.</value>
+  </data>
+  <data name="Mission" xml:space="preserve">
+    <value>Mission</value>
+  </data>
+  <data name="nine" xml:space="preserve">
+    <value>⦁ Space Creativity: A creative space that puts different young and new ideas on the right
+track towards development and growth.</value>
+  </data>
+  <data name="one" xml:space="preserve">
+    <value>⦁ Develop personal and professional skills, train recent graduates and those who are
+coming to professional life and raise the competence of those at the top of their work,
+supported by professional certificates from the best specialized institutes and the role of
+global knowledge.</value>
+  </data>
+  <data name="Principles" xml:space="preserve">
+    <value>Principles</value>
+  </data>
+  <data name="Scope" xml:space="preserve">
+    <value>Scope Of Work</value>
+  </data>
+  <data name="seven" xml:space="preserve">
+    <value>⦁ Point of sale system on the Internet manages all accounting and warehouse operations,
+and works on invoicing, calculating taxes, storing and archiving data with privacy and
+security.</value>
+  </data>
+  <data name="sex" xml:space="preserve">
+    <value>⦁ Implementation of all software development projects and its trade at a high level of
+professionalism and accuracy, with local dates and expertise covering all governorates of
+the Hashemite Kingdom of Jordan, and the Arab world gradually.</value>
+  </data>
+  <data name="SubMission" xml:space="preserve">
+    <value>A company interested in developing the labor market and providing it with the required professional skills through the Internet</value>
+  </data>
+  <data name="SubPrinciples" xml:space="preserve">
+    <value>Privacy, the importance of time. the quality</value>
+  </data>
+  <data name="SubVision" xml:space="preserve">
+    <value>Jordan's technology sector, for the world</value>
+  </data>
+  <data name="three" xml:space="preserve">
+    <value>⦁ A comprehensive online marketplace for sales and access services over the Internet.</value>
+  </data>
+  <data name="TittleScope" xml:space="preserve">
+    <value>Hanover builds its foundations according to the topography and requirements of the new
+labor market; the company provides digital services and products that increase the
+effectiveness of communication and contribute to the development of professional skills
+and facilitate sales and marketing, as well as provide technological needs for all sectors
+operating through:</value>
+  </data>
+  <data name="tow" xml:space="preserve">
+    <value>⦁ Full pages and websites with a special scope of customers’ choice and owning an official
+website for them and they have the authority to modify, write and add to their sites
+without referring to the company, and other market pages introductory to selling services
+and displaying various products under the company’s scope.</value>
+  </data>
+  <data name="Vision" xml:space="preserve">
+    <value>Vision</value>
+  </data>
+</root>

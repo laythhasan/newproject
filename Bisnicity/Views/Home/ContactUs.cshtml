@@ -1,0 +1,80 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model BisnicityApp.Entites.ContactUs
+@{
+    ViewData["Title"] = "ContactUs";
+    var mess = TempData["message"] ?? string.Empty;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<link href="~/css/contact.css" rel="stylesheet" />
+<link href="~/css/toastr.css" rel="stylesheet" />
+<div class="container mt-5">
+    <h1 style="text-align:center;">Contact Us</h1>
+    <p style="text-align: center;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+</div>
+
+<div class="container mt-5">
+    <div class="row ">
+        <div class="col">
+            <img src="~/images/contact/Frame.png" class="img-fluid" style="min-height:100%; margin-left: 4%;" width="100%" />
+        </div>
+        <div class="col-md-6 bg-white p-5">
+            <div class="form-style">
+                <form asp-action="ContactUs" asp-controller="Home" enctype="multipart/form-data" method="post">
+                    <div class="form-group pb-3">
+                        <input type="text" placeholder="Name" asp-for="FirstName" class="form-control" id="">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group pb-3">
+                        <input type="email" placeholder="Email" asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group pb-3">
+                        <input type="tel" placeholder="Phone Number" asp-for="PhoneNo" class="form-control" id="">
+                        <span asp-validation-for="PhoneNo" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group pb-3">
+                        <textarea type="text" asp-for="Messsage" placeholder="Your message" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="Messsage" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group pb-6">
+                        <button style="background: #1A9D92;
+        border-radius: 10px; width: 100%; font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 2%;">
+                            send
+                        </button>
+                    </div>
+                </form>
+
+                <div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/js/toastr.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.success(ss);
+        }
+    })
+</script>

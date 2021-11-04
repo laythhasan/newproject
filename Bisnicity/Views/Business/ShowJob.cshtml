@@ -1,0 +1,103 @@
+﻿@using Bisnicity.Models
+@model IEnumerable<ShowCompanyViewmodel>
+@{
+    Layout = "_Layout";
+    var mess = TempData["messsages"] ?? string.Empty;
+
+}
+<link href="~/css/toastr.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group" style="border-radius: 1rem;" id="listgrop">
+                <a href=@Url.Action("Index","Business") class="list-group-item list-group-item-action" aria-current="true">
+                    <i style="color: #1A9D92;" class="fa fa-user"></i>  My Account
+                </a>
+                <a href=@Url.Action("","Business") class="list-group-item list-group-item-action"> <i style="color: #1A9D92;" class="fa fa-users"></i> Show Person</a>
+                <a href=@Url.Action("","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/category.png" alt="" srcset="" width="20" height="20"> Show Company Category </a>
+                <a href=@Url.Action("AddJob","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/jop.png" alt="" srcset="" width="20" height="20"> Add job</a>
+                <a href=@Url.Action("AddPost","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/post.png" alt="" srcset="" width="20" height="20"> Add Post</a>
+                <a href=@Url.Action("","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/apply.png" alt="" srcset="" width="20" height="20"> Show Apply</a>
+
+                <a href=@Url.Action("MyPost","Business") class="list-group-item list-group-item-action"><img src="~/images/profile/mypost.png" alt="" srcset="" width="20" height="20"> My Post</a>
+
+                <a href=@Url.Action("ShowJob","Business") class="list-group-item list-group-item-action active" style="background-color: #1A9D92;">
+                    <img src="~/images/profile/company.png" alt="" srcset="" width="20" height="20"> Company Jobs
+                </a>
+
+
+            </div>
+        </div>
+        @if (Model != null)
+        {
+            <div class="col-md-9">
+                <h1 id="pass" style="margin-top: 1%;">
+                    Company Jobs
+                </h1>
+                <hr>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4">
+                            <div class="card" style="width: 17rem; background: #FFFFFF;
+                            border: 1px solid #EAEAEA;
+                            box-sizing: border-box;
+                            border-radius: 8px;">
+
+                                <div class="card-body">
+                                    <h5 class="card-title" style="text-align: center; font-family: Roboto;
+                                  font-style: normal;
+                                  font-weight: bold;
+                                  font-size: 16px;
+                                  line-height: 24px;
+                                  color: #261C2C; ">
+                                        @item.NameJob
+                                    </h5>
+
+                                    <p class="card-text" style="text-align: center; font-family: Roboto;
+                                  font-style: normal;
+                                  font-weight: normal;
+                                  font-size: 16px;
+                                  line-height: 24px;
+                                  color: #818181;">@item.jobtype</p>
+
+                                <p class="card-text" id="incard"><img src="~/images/jop/email.png" style="margin-right:5%;">@item.Email</p>
+                            </div>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item" id="incard"><img src="~/images/jop/phone.png" style="margin-right:5%;">@item.PhoneNo</li>
+
+                                <li class="list-group-item" id="incard"><img src="~/images/jop/location.png" style="margin-right:5%;">@item.City, Jordan</li>
+
+                                <li class="list-group-item" id="incard"><img src="~/images/jop/experice.png" style="margin-right:5%;">@item.Experience</li>
+
+                                <li class="list-group-item" id="incard"><img src="~/images/jop/Vector (6).png" style="margin-right:5%;">@item.Requirements. </li>
+                            </ul>
+
+                            <div class="card-body">
+                                <p class="card-text" id="incard"><img src="~/images/jop/linkedin.png" style="margin-right:5%;">WWW.linkedin.com</p>
+
+                                <a href=@Url.Action("DeleteJob","Business",new { id = item.jobvacancyid })>  <p class="card-text" id="incard"><img src="~/images/jop/delete.png" style="margin-right:5%;">Delete</p></a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                </div>
+
+
+            </div>
+        }
+
+    </div>
+</div>
+<script src="~/lib/jquery/jquery.js"></script>
+<script src="~/js/toastr.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.success(ss);
+        }
+    })
+</script>

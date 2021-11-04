@@ -1,0 +1,147 @@
+﻿@using BisnicityApp.Entites
+@model IEnumerable<PostCompany>
+
+@{
+    Layout = "_Layout";
+    var mess = TempData["Message"] ?? string.Empty;
+}
+<style>
+
+    #pass {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 22px;
+        line-height: 26px;
+        /* identical to box height */
+
+
+        color: #000000;
+    }
+
+
+
+    .list-group a:active {
+        background-color: #1A9D92;
+        color: white;
+    }
+
+    #listgrop {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        /* identical to box height */
+
+
+        color: #000000;
+    }
+
+    #text {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        /* or 171% */
+
+
+        color: #525252;
+    }
+
+    .card {
+        background: #FFFFFF;
+        border: 1px solid #C8E7E5;
+        box-sizing: border-box;
+        border-radius: 15px;
+        margin-bottom: 5%;
+    }
+
+    .card-img-top {
+        padding: 10px;
+    }
+
+    #delete {
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        color: #8C8C8C;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group" style="border-radius: 1rem;" id="listgrop">
+                <a href=@Url.Action("Index", "Business") class="list-group-item list-group-item-action" aria-current="true">
+                    <i style="color: #1A9D92;" class="fa fa-user"></i>  My Account
+                </a>
+                <a href=@Url.Action("", "Business") class="list-group-item list-group-item-action"> <i style="color: #1A9D92;" class="fa fa-users"></i> Show Person</a>
+                <a href=@Url.Action("", "Business") class="list-group-item list-group-item-action"><img src="~/images/profile/category.png" alt="" srcset="" width="20" height="20"> Show Company Category </a>
+                <a href=@Url.Action("AddJob", "Business") class="list-group-item list-group-item-action"><img src="~/images/profile/jop.png" alt="" srcset="" width="20" height="20">> Add job</a>
+                <a href=@Url.Action("AddPost", "Business") class="list-group-item list-group-item-action"><img src="~/images/profile/post.png" alt="" srcset="" width="20" height="20"> Add Post</a>
+                <a href=@Url.Action("", "Business") class="list-group-item list-group-item-action"><img src="~/images/profile/apply.png" alt="" srcset="" width="20" height="20"> Show Apply</a>
+
+                <a href=@Url.Action("MyPost", "Business") class="list-group-item list-group-item-action active" style="background-color: #1A9D92;"></i> My Post</a>
+
+                <a href=@Url.Action("ShowJob", "Business") class="list-group-item list-group-item-action">
+                    <img src="~/images/profile/company.png" alt="" srcset="" width="20" height="20"> Company Jobs
+                </a>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <h1 id="pass" style="margin-top: 1%;">My Post</h1>
+            <hr>
+            <div class="row">
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="card">
+                                    <img class="card-img-top" src="~/postImages/@item.ImagePost" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">@item.TitelePost </h5>
+                                        <p class="card-text" id="text">
+                                            @item.DetailsPost.
+                                        </p>
+
+                                        <hr>
+
+                                        <img src="~/images/myBlogs/delete.png" alt="" srcset="" width="20" height="20">
+                                        <a id="delete" href=@Url.Action("DeletePost","Business",new { id = item.PostCompanyID }) class="btn">Delete </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                }
+
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ss = '@mess';
+        if (ss) {
+            toastr.success(ss);
+        }
+    })
+</script>
+
+
+
+
